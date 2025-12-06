@@ -143,7 +143,8 @@ class CYD(object):
         cyd.wifi_create_ap(_ssid)                       # Creates an Access Point (AP) WLAN network.
         cyd.shutdown()                                  # Safely shutdown CYD device.
     '''
-    def __init__(self, rgb_pmw=False, speaker_gain=512, display_width=240, display_height=320, wifi_ssid = None, wifi_password = None):
+    def __init__(self, rgb_pmw=False, speaker_gain=512, display_width=240, display_height=320, wifi_ssid = None, wifi_password = None.
+                 rotation=0):
         '''
         Initialize CDYc
 
@@ -158,7 +159,8 @@ class CYD(object):
         '''
         # Display
         hspi = SPI(1, baudrate=40000000, sck=Pin(14), mosi=Pin(13))
-        self.display = Display(hspi, dc=Pin(2), cs=Pin(15), rst=Pin(0), width=display_width, height=display_height)
+        self.display = Display(hspi, dc=Pin(2), cs=Pin(15), rst=Pin(0), width=display_width, height=display_height,
+                               rotation=90)
         self._x = 0
         self._y = 0
 
@@ -450,3 +452,4 @@ class CYD(object):
         self.tft_bl.value(0)
         self.display.cleanup()
         print("========== Goodbye ==========")
+
